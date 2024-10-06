@@ -1,8 +1,8 @@
 <?php
 include 'db.php'; // 包含数据库连接信息的文件
 
-$username = "admin"; // 你想要添加的用户名
-$password = "yuze200936"; // 你想要添加的密码
+$username = "admin username"; // 你想要添加的用户名
+$password = "admin password"; // 你想要添加的密码
 
 // 使用 password_hash 函数创建密码哈希
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
