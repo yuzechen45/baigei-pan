@@ -19,4 +19,10 @@ CREATE TABLE files (
   PRIMARY KEY (id)
 );
 ```
- 
+ 修改db.php，填入正确的数据库信息
+ 修改insert_user.php,填入你需要的管理员用户名与密码
+ 访问域名下的insert_user.php,显示新记录插入成功既为成功创建新用户
+ 访问 你的域名/admin.php进入后台管理页面
+# 说明：
+1.你的文件应储存在./file 文件夹中
+2.这个网盘还十分简陋，很多都是抄代码或问ai,可能存在未知bug
