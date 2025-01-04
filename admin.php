@@ -35,6 +35,28 @@ if (!is_dir($directory)) {
 
 $files = scandir($directory);
 
+// 设置公告
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['announcement'])) {
+    $announcement = $_POST['announcement'];
+    $sql = "INSERT INTO announcements (content) VALUES (?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $announcement);
+    if ($stmt->execute()) {
+        echo "<div class='alert alert-success'>公告保存成功</div>";
+    } else {
+        echo "<div class='alert alert-danger'>保存失败: " . $stmt->error . "</div>";
+    }
+    $stmt->close();
+}
+
+echo "<h2>设置公告</h2>";
+echo "<form method='post' action=''>";
+echo "<label for='announcement'>公告内容:</label><br>";
+echo "<textarea id='announcement' name='announcement' rows='4' cols='50'></textarea><br>";
+echo "<input type='submit' value='保存公告'>";
+echo "</form>";
+
+
 // 创建新文件夹的处理
 if (isset($_POST['new_folder_name'])) {
     $new_folder_name = $_POST['new_folder_name'];

@@ -155,9 +155,33 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );}
         .txt {
         color: #ffffff; /* 标题字体颜色改为白色 */
         }
+       #announcement {
+            position: fixed;
+            top: 20px;
+            right: -300px; /* 初始位置在屏幕外 */
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            transition: right 0.5s;
+        }        
     </style>
 </head>
 <body>
+  <div id="announcement">
+        <?= $announcement ?>
+    </div>
+
+    <script>
+        // 显示公告
+        document.getElementById('announcement').style.right = '20px';
+
+        // 5秒后隐藏公告
+        setTimeout(function() {
+            document.getElementById('announcement').style.right = '-300px';
+        }, 5000);
+    </script>
     <div class="container">
         <h1>baigei's pan</h1>
     <div class="four">        
