@@ -102,10 +102,6 @@ $conn->close();
     </style>
 </head>
 <body>
-  <div class="alert alert-info alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>success!</strong> 成功连接数据库
-  </div>
   <div class="container">
     <div class="four">
         <h2>login</h2>
@@ -119,7 +115,7 @@ $conn->close();
                 <span class="icon">&#128272;</span>
                 <input class="input" type="password" name="password" placeholder="Password" required>
             </div>
-            <input type="submit" value="登录">
+<button type="submit" class="btn btn-primary">login</button>
         </form>
     </div>
   </div>

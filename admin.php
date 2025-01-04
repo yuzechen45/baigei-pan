@@ -38,15 +38,24 @@ $files = scandir($directory);
 // 设置公告
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['announcement'])) {
     $announcement = $_POST['announcement'];
-    $sql = "INSERT INTO announcements (content) VALUES (?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $announcement);
-    if ($stmt->execute()) {
-        echo "<div class='alert alert-success'>公告保存成功</div>";
+
+    // 删除旧的公告
+    $delete_sql = "DELETE FROM announcements";
+    if ($conn->query($delete_sql) === TRUE) {
+        // 插入新的公告内容到数据库
+        $insert_sql = "INSERT INTO announcements (content) VALUES (?)";
+        $stmt = $conn->prepare($insert_sql);
+        $stmt->bind_param("s", $announcement);
+
+        if ($stmt->execute()) {
+            echo "<div class='alert alert-success'>公告保存成功</div>";
+        } else {
+            echo "<div class='alert alert-danger'>保存失败: " . $stmt->error . "</div>";
+        }
+        $stmt->close();
     } else {
-        echo "<div class='alert alert-danger'>保存失败: " . $stmt->error . "</div>";
+        echo "<div class='alert alert-danger'>删除旧公告失败: " . $conn->error . "</div>";
     }
-    $stmt->close();
 }
 
 echo "<h2>设置公告</h2>";

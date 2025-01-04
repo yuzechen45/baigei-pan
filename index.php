@@ -1,4 +1,17 @@
 <?php
+include 'db.php';
+
+// 获取最新的公告内容
+$sql = "SELECT content FROM announcements ORDER BY id DESC LIMIT 1";
+$result = $conn->query($sql);
+$announcement = '';
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $announcement = $row['content'];
+}
+$conn->close();
+?>
+<?php
 $directory = isset($_GET['dir']) ? $_GET['dir'] : './file';
 
 function listFiles($dir)
@@ -165,23 +178,27 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );}
             padding: 10px;
             border-radius: 5px;
             transition: right 0.5s;
+            z-index: 1000;
         }        
     </style>
 </head>
 <body>
-  <div id="announcement">
-        <?= $announcement ?>
-    </div>
 
-    <script>
-        // 显示公告
-        document.getElementById('announcement').style.right = '20px';
+<?php if (!empty($announcement)): ?>
+        <div id="announcement">
+            <?= $announcement ?>
+        </div>
 
-        // 5秒后隐藏公告
-        setTimeout(function() {
-            document.getElementById('announcement').style.right = '-300px';
-        }, 5000);
-    </script>
+        <script>
+            // 显示公告
+            document.getElementById('announcement').style.right = '20px';
+
+            // 5秒后隐藏公告
+            setTimeout(function() {
+                document.getElementById('announcement').style.right = '-300px';
+            }, 5000);
+        </script>
+    <?php endif; ?>
     <div class="container">
         <h1>baigei's pan</h1>
     <div class="four">        
@@ -219,6 +236,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );}
     <p></p>    <p></p>
     <div class="four">
     <h2 class="txt">mc server</h2>
-    <p class="txt">欢迎访问baigei's mc server,这里储存了一些启动器与mods,本页面网址既为mc服务器地址：sb3z.us.kg<p class="txt">下面是本人的一些项目</p><p class="txt">blog：baigei.us.kg</p><p class="txt">八班网：class8.skyman.cloud</p></p></div>
+    <p class="txt">欢迎访问baigei's mc server,这里储存了一些启动器与mods,本页面网址既为mc服务器地址：sb3z.us.kg<p class="txt">下面是本人的一些项目</p><p class="txt">blog：baigei.us.kg</p><p class="txt">八班网：class8.skyman.cloud</p></p></p></p></div>
+    <div></div>
+    <div class="four"><p>由baigei pan 强力驱动</p><p><a href="./login.php">登录</a></p>
+</div>
 </body>
 </html>
