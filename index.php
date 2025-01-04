@@ -235,8 +235,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );}
     </div>
     <p></p>    <p></p>
     <div class="four">
-    <h2 class="txt">mc server</h2>
-    <p class="txt">欢迎访问baigei's mc server,这里储存了一些启动器与mods,本页面网址既为mc服务器地址：sb3z.us.kg<p class="txt">下面是本人的一些项目</p><p class="txt">blog：baigei.us.kg</p><p class="txt">八班网：class8.skyman.cloud</p></p></p></p></div>
+    <h2 class="txt">Your instructions</h2>
     <div></div>
     <div class="four"><p>由baigei pan 强力驱动</p><p><a href="./login.php">登录</a></p>
 </div>
