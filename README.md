@@ -21,6 +21,13 @@ CREATE TABLE files (
   PRIMARY KEY (id)
 );
 ```
+```sql
+CREATE TABLE announcements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
  修改db.php，填入正确的数据库信息
  
  修改insert_user.php,填入你需要的管理员用户名与密码
